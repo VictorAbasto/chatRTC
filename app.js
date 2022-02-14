@@ -23,6 +23,12 @@ let connectedUsers = [];
 io.on('connection', (socket) => {
 	connectedUsers.push(socket.id);
 	console.log(connectedUsers);
+
+	socket.on('pre-offer', (data) => {
+		console.log('pre-offer came');
+		console.log(data);
+	});
+
 	socket.on('disconnect', () => {
 		console.log('user disconnected');
 
